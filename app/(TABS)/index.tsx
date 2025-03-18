@@ -6,7 +6,7 @@ export default function Index() {
     <View
       className="flex-1 justify-center items-center"
     >
-      <Text className="text-5xl font-bold text-blue-500">Welcome!</Text>
+      <Text className="text-5xl font-bold text-blue-500">Hello!</Text>
       
     </View>
   );
