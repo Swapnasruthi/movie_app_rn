@@ -2,7 +2,7 @@ import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { Link, useRouter } from "expo-router";
 import { ActivityIndicator, FlatList, Image, ScrollView, Text, View } from "react-native";
-import Search from "../components/Search";
+import Search from "../components/SearchBar";
 import useFetch from "@/services/useFetch";
 import { fetchMovies } from "@/services/api";
 import MovieCard from "../components/MovieCard";
@@ -24,7 +24,7 @@ export default function Index() {
 
               moviesLoading? (
                 <ActivityIndicator 
-                  size="small"
+                  size="large"
                   color="#0000ff"
                   className="mt-10 self-center"
                 />

@@ -11,7 +11,7 @@ export const TMDB_CONFIG = {
 // /discover/movie
 export const fetchMovies = async ({query} : {query:string}) => {
     const endPoints = query ? 
-                    `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}` : `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc&include_adult=true&with_original_language=te&page=1`;
+                    `${TMDB_CONFIG.BASE_URL}/search/movie?query=${encodeURIComponent(query)}` : `${TMDB_CONFIG.BASE_URL}/discover/movie?sort_by=popularity.desc&include_adult=false&with_original_language=te&page=1`;
     const response = await fetch(endPoints, {
         method:'GET',
         headers:TMDB_CONFIG.headers
