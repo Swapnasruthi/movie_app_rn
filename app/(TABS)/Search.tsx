@@ -6,6 +6,7 @@ import useFetch from '@/services/useFetch'
 import { fetchMovies } from '@/services/api'
 import { icons } from '@/constants/icons'
 import SearchBar from '../components/SearchBar'
+import { updateSearchCount } from '@/services/appwrite'
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,6 +17,9 @@ const Search = () => {
     const timeOutId = setTimeout(async () => {
       if(searchQuery.trim()){
         await loadMovies();
+        if(movies?.length>0 && movies?.[0]){
+           await updateSearchCount(searchQuery, movies[0]);  
+        }
       }else{
         reset();
       }
@@ -56,7 +60,11 @@ const Search = () => {
                     onChangeText = {(text : string) => setSearchQuery(text)}
                   />
               </View>
-
+              {
+              searchQuery.length>0 && <View className='flex justify-content my-5 mx-5'>
+                  <Text className='text-white font-bold text-xl'>Search results for <Text className='text-yellow-500 text-2xl'>"{searchQuery}"</Text></Text>
+              </View>
+              }
               { moviesLoading && (
                 <ActivityIndicator 
                     size="large" 
